@@ -56,7 +56,7 @@ class Sales extends \yii\db\ActiveRecord
             'sum' => 'Цена покупки',
             'cash' => 'Оплата наличными',
             'seller_id' => 'Фамилия продавца',
-            'client_id' => 'Номер оптового покупателя',
+            'client_id' => 'Фирма-покупатель',
             'part_id' => 'Номер партии',
         ];
     }

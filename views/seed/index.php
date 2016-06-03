@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\Technology;
+use app\models\Period;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\SeedSearch */
@@ -22,15 +25,31 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            //['class' => 'yii\grid\SerialColumn'],
 
             'id',
             'name',
             'year',
-            'adaptation',
-            'frost',
-            'technology.description',
-            // 'period_id',
+            [
+                'attribute' => 'adaptation',
+                'value' => function($model) {return $model->adaptation == 1 ? 'Да' : 'Нет';}
+            ],
+            [
+                'attribute' => 'frost',
+                'value' => function($model) {return $model->frost == 1 ? 'Да' : 'Нет';}
+            ],
+            [
+                'label' => 'Способ посадки',
+                'attribute' => 'technology_id',
+                'value' => function($model) {return $model->technology->description;},
+                'filter' => Html::activeDropDownList($searchModel, 'technology_id', ArrayHelper::map(Technology::find()->asArray()->all(), 'id', 'description'),['class'=>'form-control','prompt' => 'Укажите способ']),
+            ],
+            [
+                'label' => 'Срок созревания',
+                'attribute' => 'period_id',
+                'value' => function($model) {return $model->period->time;},
+                'filter' => Html::activeDropDownList($searchModel, 'period_id', ArrayHelper::map(Period::find()->asArray()->all(), 'id', 'time'),['class'=>'form-control','prompt' => 'Укажите срок']),
+            ],
             'description',
 
             ['class' => 'yii\grid\ActionColumn'],

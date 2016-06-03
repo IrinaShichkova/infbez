@@ -31,10 +31,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             'year',
-            'adaptation',
-            'frost',
-            'technology_id',
-            'period_id',
+            [
+                'label' => 'Адаптация к местным условиям',
+                'value' => $model->adaptation == 1 ? 'Да' : 'Нет'
+            ],
+            [
+                'label' => 'Морозоустойчивость',
+                'value' => $model->frost == 1 ? 'Да' : 'Нет'
+            ],
+            'technology.description',
+            'period.time',
             'description',
             [
                 'format' => 'raw',

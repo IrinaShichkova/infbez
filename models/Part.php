@@ -38,7 +38,8 @@ class Part extends \yii\db\ActiveRecord
         return [
             [['number', 'end', 'amount', 'batch_time', 'weight', 'batch_id', 'seed_id'], 'required'],
             [['number', 'amount'], 'number'],
-            [['end', 'yes', 'batch_time', 'weight', 'batch_id', 'seed_id'], 'integer'],
+            [['end', 'yes', 'weight', 'batch_id', 'seed_id'], 'integer'],
+            [['batch_time'], 'string'],
             [['batch_id'], 'exist', 'skipOnError' => true, 'targetClass' => Batch::className(), 'targetAttribute' => ['batch_id' => 'id']],
             [['seed_id'], 'exist', 'skipOnError' => true, 'targetClass' => Seed::className(), 'targetAttribute' => ['seed_id' => 'id']],
         ];
@@ -85,4 +86,16 @@ class Part extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Sales::className(), ['part_id' => 'id']);
     }
+
+    public function getDateStr()
+    {
+        return null === $this->batch_time ? '' : date('d.m.Y', $this->batch_time);
+    }
+
+    public function setDateStr($value)
+    {
+        $date = \DateTime::createFromFormat('d.m.Y', $value);
+        $this->batch_time = $date->getTimestamp();
+    }
+
 }

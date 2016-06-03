@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\models\Technology;
+use app\models\Period;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Seed */
@@ -20,11 +21,11 @@ use app\models\Technology;
 
     <?= $form->field($model, 'adaptation')->checkbox() ?>
 
-    <?= $form->field($model, 'frost')->textInput() ?>
+    <?= $form->field($model, 'frost')->checkbox() ?>
 
     <?= $form->field($model, 'technology_id')->dropDownList([''=>'']+ArrayHelper::map(Technology::find()->orderBy('description')->all(), 'id', 'description')) ?>
 
-    <?= $form->field($model, 'period_id')->textInput() ?>
+    <?= $form->field($model, 'period_id')->dropDownList([''=>'']+ArrayHelper::map(Period::find()->orderBy('time')->all(), 'id', 'time')) ?>
 
     <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
 

@@ -35,8 +35,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'end',
             'yes',
-            'amount',
-            // 'batch_time:datetime',
+            // 'amount',
+            'batch_time:datetime',
             // 'weight',
             // 'batch_id',
 

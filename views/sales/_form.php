@@ -3,6 +3,10 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\widgets\DatePicker;
+use yii\helpers\ArrayHelper;
+use app\models\Seller;
+use app\models\Client;
+use app\models\Part;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Sales */
@@ -20,13 +24,13 @@ use kartik\widgets\DatePicker;
 
     <?= $form->field($model, 'sum')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'cash')->textInput() ?>
+    <?= $form->field($model, 'cash')->checkbox() ?>
 
-    <?= $form->field($model, 'seller_id')->textInput() ?>
+    <?= $form->field($model, 'seller_id')->dropDownList([''=>'']+ArrayHelper::map(Seller::find()->orderBy('name')->all(), 'id', 'name')) ?>
 
-    <?= $form->field($model, 'client_id')->textInput() ?>
+    <?= $form->field($model, 'client_id')->dropDownList([''=>'']+ArrayHelper::map(Client::find()->orderBy('company')->all(), 'id', 'company')) ?>
 
-    <?= $form->field($model, 'part_id')->textInput() ?>
+    <?= $form->field($model, 'part_id')->dropDownList([''=>'']+ArrayHelper::map(Part::find()->orderBy('number')->all(), 'id', 'number')) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Изменить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

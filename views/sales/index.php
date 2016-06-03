@@ -22,15 +22,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+//            ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'buy_data',
+  //          'id',
+            'buy_data:date',
             'sum',
-            'cash',
-            'seller_id',
-            // 'client_id',
-            // 'part_id',
+            [
+                'attribute' => 'cash',
+                'value' => function($model) {return $model->cash == 1 ? 'Да' : 'Нет';}
+            ],
+            'seller.name',
+            'client.company',
+            'part.number',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

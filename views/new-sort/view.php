@@ -29,9 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'date',
+            'date:date',
             'comment:ntext',
-            'seed_id',
+            //'seed_id',
         ],
     ]) ?>
 

@@ -28,15 +28,18 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+            //'id',
             'number',
             'end',
-            'yes',
+            [
+                'label' => 'Оплата наличными',
+                'value' => $model->yes == 1 ? 'Да' : 'Нет'
+            ],
             'amount',
             'batch_time:datetime',
             'weight',
-            'batch_id',
-            'seed_id',
+            'batch.name',
+            'seed.name',
         ],
     ]) ?>
 

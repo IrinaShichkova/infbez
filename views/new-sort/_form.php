@@ -24,7 +24,7 @@ use kartik\widgets\DatePicker;
         <?= Html::submitButton($model->isNewRecord ? 'Создать' : 'Изменить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
 
         <?if(!$model->isNewRecord): ?>
-            <?= Html::a('Создать любое слово', ['/seed/to-seed', 'id' => $model->id],['class' => 'btn btn-primary']) ?>
+            <?= Html::a('Включить в ассортимент', ['/seed/to-seed', 'id' => $model->id],['class' => 'btn btn-primary']) ?>
         <?endif;?>
     </div>
 

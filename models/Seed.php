@@ -76,6 +76,7 @@ class Seed extends \yii\db\ActiveRecord
             'technology_id' => 'Способ посадки',
             'period_id' => 'Срок созревания',
             'description' => 'Описание характеристик сорта',
+            'imageFile'=> 'Фото'
         ];
     }
 

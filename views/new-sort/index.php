@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+           // ['class' => 'yii\grid\SerialColumn'],
 
             'id',
             //'date:date',
@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => function($model) {return date('d.m.Y',$model->date);}
             ],
             'comment:ntext',
-            'seed_id',
+           // 'seed_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
